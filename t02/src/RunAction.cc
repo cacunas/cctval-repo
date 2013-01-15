@@ -5,6 +5,9 @@
 #include "G4RunManager.hh"
 #include "G4UnitsTable.hh"
 
+#include "TFile.h"
+#include "TH1.h"
+
 RunAction::RunAction()
 : G4UserRunAction(), H1Energy(NULL), H1Time(NULL), file(NULL)
 {

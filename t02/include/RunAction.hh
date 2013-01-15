@@ -6,6 +6,9 @@
 
 #include "g4root.hh"
 
+#include "TFile.h"
+#include "TH1.h"
+
 class G4Run;
 
 class RunAction : public G4UserRunAction {

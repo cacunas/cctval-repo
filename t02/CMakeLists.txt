@@ -17,9 +17,9 @@ endif()
 
 #----------------------------------------------------------------------------
 #
-#set(CMAKE_MODULE_PATH $G4INSTALL/cmake/Modules)
-#find_package(ROOT)
-#include_directories(/usr/local/include/root)
+set(CMAKE_MODULE_PATH $G4INSTALL/cmake/Modules)
+find_package(ROOT)
+include_directories(/usr/local/include/root)
 
 #----------------------------------------------------------------------------
 # Setup Geant4 include directories and compile definitions
@@ -43,14 +43,15 @@ target_link_libraries(t02 ${Geant4_LIBRARIES} ${ROOT_LIBRARIES})
 
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
-# build Bcal01. This is so that we can run the executable directly because it
+# build t02. This is so that we can run the executable directly because it
 # relies on these scripts being in the current working directory.
 #
-set(t02_SCRIPTS
+set(T02_SCRIPTS
     vis.mac
+	init_vis.mac
   )
 
-foreach(_script ${LYSO_SCRIPTS})
+foreach(_script ${T02_SCRIPTS})
   configure_file(
     ${PROJECT_SOURCE_DIR}/${_script}
     ${PROJECT_BINARY_DIR}/${_script}
