@@ -1,0 +1,30 @@
+#include "C2RunAction.hh"
+#include "G4Run.hh"
+#include "TFile.h"
+#include "TTree.h"
+
+C2RunAction::C2RunAction()
+{}
+
+C2RunAction::~C2RunAction()
+{}
+
+void C2RunAction::BeginOfRunAction(const G4Run* aRun)
+{
+G4cout << "### Run " << aRun->GetRunID() << " start." << G4endl;
+outfile = new TFile("certamen2.root","RECREATE");
+tree = new TTree("tree","Events"); //Como cada electrón inicial es un evento, entonces se hará un árbol por cada electrón
+}
+
+void C2RunAction::fillPerEvent(G4double EAbs){sumEAbs += EAbs;}
+
+void C2RunAction::EndOfRunAction(const G4Run*)
+{
+tree->Write();   //Al final de cada evento, se escribe en el árbol
+outfile->Close();
+G4cout
+     << "\n--------------------End of Run------------------------------\n"
+     << "\n Total Energy Absorbered : " << sumEAbs; 
+} 
+
+

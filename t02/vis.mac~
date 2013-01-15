@@ -1,0 +1,37 @@
+#Create an OpenGL view:
+/vis/open HepRepFile
+
+# Disable auto refresh and quieten vis messages whilst scene and
+# trajectories are established:
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+
+# Draw geometry:
+/vis/drawVolume
+
+# Draw coordinate axes:
+/vis/scene/add/axes 0 0 0 50 mm
+
+# Draw trajectories at end of event.
+# Add "smooth" or "rich" to change viewing details
+/vis/scene/add/trajectories
+
+#Select colour by particle ID:
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/set e- red
+/vis/modeling/trajectories/drawByParticleID-0/set e+ green 
+/vis/modeling/trajectories/drawByParticleID-0/set gamma magenta
+/vis/modeling/trajectories/drawByParticleID-0/set opticalphoton yellow
+
+#Attempt to make a movie
+/vis/ogl/set/fade 1
+/vis/ogl/set/displayHeadTime true
+/control/alias timeRange 1
+/control/loop movie.loop -{timeRange} 40 0.1
+
+#Superimpose all of the events from a given run:
+/vis/scene/endOfEventAction accumulate 
+
+# Re-establish auto refreshing and verbosity:
+/vis/viewer/set/autoRefresh true
+/vis/verbose warnings

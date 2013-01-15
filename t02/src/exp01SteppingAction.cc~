@@ -1,0 +1,17 @@
+#include "exp01SteppingAction.hh"
+#include "exp01DetectorConstruction.hh"
+#include "exp01EventAction.hh"
+#include "G4Step.hh"
+
+exp01SteppingAction::exp01SteppingAction(exp01EventAction* evt):ev_action(evt)					 
+{}
+
+exp01SteppingAction::~exp01SteppingAction()
+{}
+
+void exp01SteppingAction::UserSteppingAction(const G4Step* aStep)
+{
+  G4double edep = aStep->GetTotalEnergyDeposit();  
+  ev_action->AddAbs(edep);
+}
+

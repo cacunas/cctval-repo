@@ -1,0 +1,23 @@
+#include "exp01TrackingAction.hh"
+#include "G4TrackingManager.hh"
+#include "exp01EventAction.hh"
+#include "G4Track.hh"
+
+exp01TrackingAction::exp01TrackingAction(exp01EventAction* evt)
+:ev_action(evt){}
+
+void exp01TrackingAction::PreUserTrackingAction(const G4Track* aTrack)
+{
+  //if((aTrack->GetKineticEnergy()>50*MeV)){
+     ev_action->momx = aTrack->GetMomentum().getX();
+     ev_action->momy = aTrack->GetMomentum().getY();
+     ev_action->momz = aTrack->GetMomentum().getZ();
+     ev_action->posx = aTrack->GetPosition().getX();
+     ev_action->posy = aTrack->GetPosition().getY();
+     ev_action->posz = aTrack->GetPosition().getZ();
+     ev_action->TrackID = aTrack->GetParentID();
+     ev_action->Ei = aTrack->GetKineticEnergy();
+  //   ev_action->tree->Fill();
+  //}
+}
+
