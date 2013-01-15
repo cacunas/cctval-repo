@@ -19,10 +19,10 @@ public:
 	void BeginOfRunAction(const G4Run*);
 	void EndOfRunAction(const G4Run*);
 
-private:
+//private:
 	TFile* file;
-	TH1* H1Energy;
-	TH1* H1Time;
+	TH1D* H1Energy;
+	TH1D* H1Time;
 };
 
 #endif

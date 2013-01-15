@@ -3,6 +3,8 @@
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
 project(t02)
 
+add_definitions(-Wno-dev)
+
 #----------------------------------------------------------------------------
 # Find Geant4 package, activating all available UI and Vis drivers by default
 # You can set WITH_GEANT4_UIVIS to OFF via the command line or ccmake/cmake-gui
@@ -48,7 +50,7 @@ target_link_libraries(t02 ${Geant4_LIBRARIES} ${ROOT_LIBRARIES})
 #
 set(T02_SCRIPTS
     vis.mac
-	init_vis.mac
+    init_vis.mac
   )
 
 foreach(_script ${T02_SCRIPTS})

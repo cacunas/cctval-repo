@@ -34,7 +34,7 @@
 #include "G4StepLimiter.hh"
 #include "G4UserSpecialCuts.hh"
 
-PhysicsList::PhysicsList() : G4VPhysicsList()
+PhysicsList::PhysicsList()
 {
     defaultCutValue = 1.0 * cm;
     SetVerboseLevel(1);

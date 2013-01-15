@@ -11,7 +11,7 @@
 #include "DetectorConstruction.hh"
 #include "PhysicsList.hh"
 #include "PrimaryGeneratorAction.hh"
-#include "EventAction.hh"
+#include "RunAction.hh"
 
 int
 main(int argc, char** argv)
@@ -20,14 +20,14 @@ main(int argc, char** argv)
     G4RunManager* runManager = new G4RunManager;
 
     //set mandatory initialization aclasses
-    runManager->SetUserInitialization(new DetectorConstruction);
     runManager->SetUserInitialization(new PhysicsList);
-
+    
+    RunAction* runAction = new RunAction;
+    runManager->SetUserAction(runAction);
+    
+    runManager->SetUserInitialization(new DetectorConstruction(runAction));
+    
     runManager->SetUserAction(new PrimaryGeneratorAction);
-
-    //set event action
-    EventAction* eventAction = new EventAction;
-    runManager->SetUserAction(eventAction);
 
     // initialize G4 kernel
     runManager->Initialize();

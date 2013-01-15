@@ -13,7 +13,7 @@ class G4Material;
 class DetectorConstruction : public G4VUserDetectorConstruction {
 public:
 
-	DetectorConstruction();
+	DetectorConstruction(RunAction*);
 	~DetectorConstruction();
 
 public:
