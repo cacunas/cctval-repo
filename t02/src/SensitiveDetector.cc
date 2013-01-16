@@ -31,18 +31,18 @@ void SensitiveDetector::Initialize(G4HCofThisEvent*)
 G4bool SensitiveDetector::ProcessHits(G4Step* step, G4TouchableHistory*)
 {
 
-//    if (step->GetTrack()->GetDefinition() == G4OpticalPhoton::OpticalPhoton()) {
-//
-//        //Photons Entering The Sensitive Detector
-//        point = step->GetPreStepPoint();
-//        pos = point->GetPosition();
-//        mom = point->GetMomentumDirection();
-//        energy = point->GetKineticEnergy();
-//        time = point->GetGlobalTime();
-//        runAction->H1Energy->Fill(energy / eV);
-//        runAction->H1Time->Fill(time / ns);
-//
-//    }
+    if (step->GetTrack()->GetDefinition() == G4OpticalPhoton::OpticalPhoton()) {
+
+        //Photons Entering The Sensitive Detector
+        point = step->GetPreStepPoint();
+        pos = point->GetPosition();
+        mom = point->GetMomentumDirection();
+        energy = point->GetKineticEnergy();
+        time = point->GetGlobalTime();
+        runAction->H1Energy->Fill(energy / eV);
+        runAction->H1Time->Fill(time / ns);
+
+    }
     return true;
 }
 
