@@ -147,14 +147,14 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     solidSensor_L = new G4Box("sensor_l", 2 * mm, 2 * mm, 2 * mm);
     logicSensor_L =
             new G4LogicalVolume(solidSensor_L, Air, "Sensor_L", 0, 0, 0);
-    physiSensor_L = new G4PVPlacement(NULL, G4ThreeVector(0., -25.5 * mm, 0.),
+    physiSensor_L = new G4PVPlacement(NULL, G4ThreeVector(0., -24.5 * mm, 0.),
             logicSensor_L, "Sensor_L", logicWorld, false, 0);
 
     // Definition of "right sensor"
     solidSensor_R = new G4Box("sensor_r", 2 * mm, 2 * mm, 2 * mm);
     logicSensor_R =
             new G4LogicalVolume(solidSensor_R, Air, "Sensor_R", 0, 0, 0);
-    physiSensor_R = new G4PVPlacement(0, G4ThreeVector(0., 25.5 * mm, 0.),
+    physiSensor_R = new G4PVPlacement(0, G4ThreeVector(0., 24.5 * mm, 0.),
             logicSensor_L, "Sensor_R", logicWorld, false, 0);
 
     SensitiveDetector* sd =
