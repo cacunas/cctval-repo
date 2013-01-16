@@ -1,5 +1,5 @@
 #Create an OpenGL view:
-/vis/open HepRepFile
+#/vis/open HepRepFile
 
 # Disable auto refresh and quieten vis messages whilst scene and
 # trajectories are established:
