@@ -6,30 +6,20 @@
 
 class PhysicsList : public G4VUserPhysicsList {
 public:
+
 	PhysicsList();
 	~PhysicsList();
 
-protected:
-	//Construcción de partículas y procesos
+private:
+
 	void ConstructParticle();
 	void ConstructProcess();
 	void SetCuts();
 
-
-protected:
-	//Métodos para construir partículas 
-	void ConstructBosons();
-	void ConstructLeptons();
-	void ConstructMesons();
-	void ConstructBaryons();
-
-protected:
-	//Métodos para construir la física de los procesos y registrarlos
-	void ConstructGeneral();
-	void AddStepMax();
 	void ConstructEM();
 	void ConstructOp();
 	void ConstructScintillation();
+
 };
 
 #endif
