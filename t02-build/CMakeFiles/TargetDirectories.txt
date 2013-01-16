@@ -1,1 +1,0 @@
-/home/cristian/Documents/programming/github-repo/cctval-repo/t02-build/CMakeFiles/t02.dir
