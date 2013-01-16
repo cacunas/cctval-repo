@@ -1,4 +1,5 @@
 #include "DetectorConstruction.hh"
+
 #include "G4Element.hh"
 #include "G4Material.hh"
 #include "G4Box.hh"
@@ -10,6 +11,9 @@
 
 #include "G4SDManager.hh"
 #include "SensitiveDetector.hh"
+
+#include "G4UserLimits.hh"
+#include "G4LogicalVolumeStore.hh"
 //#include "G4MultiFunctionalDetector.hh"
 //#include "G4VPrimitiveScorer.hh"
 //#include "G4PSEnergyDeposit.hh"
@@ -97,6 +101,15 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
         3.5 * m, 3.5 * m, 3.5 * m, 3.5 * m,
         3.5 * m, 3.5 * m, 3.5 * m, 3.5 * m,
         3.5 * m, 3.5 * m, 3.5 * m, 3.5 * m};
+    
+// Constraints for minimum energy solution (test) ------------------------------
+    G4LogicalVolumeStore* lvStore=G4LogicalVolumeStore::GetInstance();
+    G4UserLimits *MyLimits = new G4UserLimits();
+    MyLimits->SetUserMinEkine(3.542405*eV);
+    for (size_t i=0; i<lvStore->size(); i++) {
+        (*lvStore)[i]->SetUserLimits(MyLimits);
+    }
+//------------------------------------------------------------------------------
 
     G4MaterialPropertiesTable* mpt1 = new G4MaterialPropertiesTable();
     G4MaterialPropertiesTable* mpt2 = new G4MaterialPropertiesTable();

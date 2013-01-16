@@ -4,8 +4,6 @@
 #include "G4UserRunAction.hh"
 #include "globals.hh"
 
-#include "g4root.hh"
-
 #include "TFile.h"
 #include "TH1.h"
 
@@ -20,9 +18,9 @@ public:
 	void EndOfRunAction(const G4Run*);
 
 //private:
-	TFile* file;
 	TH1D* H1Energy;
 	TH1D* H1Time;
+	TFile* file;
 };
 
 #endif

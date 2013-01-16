@@ -1,5 +1,5 @@
 #include "RunAction.hh"
-#include "g4root.hh"
+//#include "g4root.hh"
 #include "PrimaryGeneratorAction.hh"
 #include "G4Run.hh"
 #include "G4RunManager.hh"
@@ -21,8 +21,8 @@ void RunAction::BeginOfRunAction(const G4Run* aRun)
 {
     G4cout<<"Run "<<aRun->GetRunID()<<" start..."<<G4endl;
     
-    if ((file = TFile::Open("LYSO.root")) == NULL)
-        file = new TFile("LYSO.root", "RECREATE");
+//    if ((file = TFile::Open("LYSO.root")) == NULL)
+    file = new TFile("LYSO.root", "RECREATE");
 
     G4int nBin = 1000;
     G4double eneMin = 1.5;

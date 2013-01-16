@@ -5,7 +5,8 @@
 #include "G4ThreeVector.hh"
 #include "G4HCofThisEvent.hh"
 #include "G4OpticalPhoton.hh"
-#include "g4root.hh"
+
+#include "TH1.h"
 
 SensitiveDetector::SensitiveDetector(const G4String& name,
         RunAction* runaction)
@@ -36,12 +37,12 @@ G4bool SensitiveDetector::ProcessHits(G4Step* step, G4TouchableHistory*)
         point = step->GetPreStepPoint();
         pos = point->GetPosition();
         mom = point->GetMomentumDirection();
-        if (std::abs(pos(2)) == 22.51 * mm && pos(2) * mom(2) > 0) {
+//        if (std::abs(pos(2)) == 22.51 * mm && pos(2) * mom(2) > 0) {
             energy = point->GetKineticEnergy();
             time = point->GetGlobalTime();
             runAction->H1Energy->Fill(energy / eV);
             runAction->H1Time->Fill(time / ns);
-        }
+//        }
     }
     return true;
 }
