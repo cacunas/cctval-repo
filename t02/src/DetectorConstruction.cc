@@ -134,10 +134,6 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     //          a = 1.01 * g / mole, density, kStateGas, temperature, pressure);
     //-------------------------------------------------------------------------
 
-    /*Imprime materiales definidos
-    G4cout << G4endl << "The materials defined are : " << G4endl << G4endl;
-    G4cout << *( G4Material::GetMaterialTable() ) << G4endl;
-     */
 
     //Definición de "World Volume"
     solidWorld = new G4Box("world", 10 * cm, 10 * cm, 10 * cm);
@@ -164,16 +160,6 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
             new G4LogicalVolume(solidSensor_R, LYSO, "Sensor_R", 0, 0, 0);
     physiSensor_R = new G4PVPlacement(0, G4ThreeVector(0., 24.5 * mm, 0.),
             logicSensor_L, "Sensor_R", logicWorld, false, 0);
-
-    /*Atributos de Visualización
-    G4VisAttributes* WorldVisAtt = new G4VisAttributes(G4Colour(1.0, 1.0, 1.0));
-    logicWorld->SetVisAttributes(WorldVisAtt);
-
-    G4VisAttributes* TargetVisAtt = new G4VisAttributes(G4Colour(1.0, 1.0, 0.0));
-    logicTarget->SetVisAttributes(TargetVisAtt);
-     */
-
-    //CreateScorers();
 
     SensitiveDetector* sd =
             new SensitiveDetector("SensitiveDetector", runAction);

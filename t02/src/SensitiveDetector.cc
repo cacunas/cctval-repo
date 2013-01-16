@@ -37,12 +37,11 @@ G4bool SensitiveDetector::ProcessHits(G4Step* step, G4TouchableHistory*)
         point = step->GetPreStepPoint();
         pos = point->GetPosition();
         mom = point->GetMomentumDirection();
-//        if (std::abs(pos(2)) == 22.51 * mm && pos(2) * mom(2) > 0) {
-            energy = point->GetKineticEnergy();
-            time = point->GetGlobalTime();
-            runAction->H1Energy->Fill(energy / eV);
-            runAction->H1Time->Fill(time / ns);
-//        }
+        energy = point->GetKineticEnergy();
+        time = point->GetGlobalTime();
+        runAction->H1Energy->Fill(energy / eV);
+        runAction->H1Time->Fill(time / ns);
+
     }
     return true;
 }
