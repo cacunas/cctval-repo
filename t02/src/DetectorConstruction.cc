@@ -1,4 +1,5 @@
 #include "DetectorConstruction.hh"
+#include "SensitiveDetector.hh"
 
 #include "G4Element.hh"
 #include "G4Material.hh"
@@ -10,7 +11,6 @@
 #include "G4NistManager.hh"
 
 #include "G4SDManager.hh"
-#include "SensitiveDetector.hh"
 
 #include "G4UserLimits.hh"
 #include "G4LogicalVolumeStore.hh"
@@ -123,11 +123,11 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     Air ->SetMaterialPropertiesTable(mpt2);
 
     // Vacuum definition -------------------------------------------------------
-    density = universe_mean_density; //from PhysicalConstants.h
+    G4int density = universe_mean_density; //from PhysicalConstants.h
     G4double pressure = 1.e-19 * pascal;
     G4double temperature = 0.1 * kelvin;
-    G4Material* Vacuum = new G4Material("Vacuum", z = 1.,
-        a = 1.01 * g / mole, density, kStateGas, temperature, pressure);
+    G4Material* Vacuum = new G4Material("Vacuum", 1.,
+        1.01 * g / mole, density, kStateGas, temperature, pressure);
     //-------------------------------------------------------------------------
 
 
