@@ -34,13 +34,14 @@ private:
 	G4LogicalVolume* logicTarget;
 	G4VPhysicalVolume* physiTarget;
 
-	G4Box* solidSensor_L;
-	G4LogicalVolume* logicSensor_L;
-	G4VPhysicalVolume* physiSensor_L;
-
-	G4Box* solidSensor_R;
-	G4LogicalVolume* logicSensor_R;
-	G4VPhysicalVolume* physiSensor_R;
+//	G4Box* solidSensor_L;
+//	G4LogicalVolume* logicSensor_L;
+//	G4VPhysicalVolume* physiSensor_L;
+//
+//	G4Box* solidSensor_R;
+//	G4LogicalVolume* logicSensor_R;
+//	G4VPhysicalVolume* physiSensor_R;
+	
 	RunAction *runAction;
 };
 
