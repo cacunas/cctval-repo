@@ -19,8 +19,8 @@
 DetectorConstruction::DetectorConstruction(RunAction* aRunAction)
 : solidWorld(NULL), logicWorld(NULL), physiWorld(NULL),
 solidTarget(NULL), logicTarget(NULL), physiTarget(NULL),
-solidSensor_L(NULL), logicSensor_L(NULL), physiSensor_L(NULL),
-solidSensor_R(NULL), logicSensor_R(NULL), physiSensor_R(NULL),
+//solidSensor_L(NULL), logicSensor_L(NULL), physiSensor_L(NULL),
+//solidSensor_R(NULL), logicSensor_R(NULL), physiSensor_R(NULL),
 runAction(aRunAction)
 {
 }
