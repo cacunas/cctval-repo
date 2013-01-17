@@ -122,13 +122,13 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     LYSO->SetMaterialPropertiesTable(mpt1);
     Air ->SetMaterialPropertiesTable(mpt2);
 
-    // Vacuum definition -------------------------------------------------------
+// Vacuum definition -----------------------------------------------------------
     G4int density = universe_mean_density; //from PhysicalConstants.h
     G4double pressure = 1.e-19 * pascal;
     G4double temperature = 0.1 * kelvin;
     G4Material* Vacuum = new G4Material("Vacuum", 1.,
         1.01 * g / mole, density, kStateGas, temperature, pressure);
-    //-------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
     //Definición de "World Volume"
@@ -144,25 +144,27 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
             logicTarget, "Target", logicWorld, false, 0);
 
     // Definition of "left sensor"
-    solidSensor_L = new G4Box("sensor_l", 2 * mm, 2 * mm, 2 * mm);
-    logicSensor_L =
-            new G4LogicalVolume(solidSensor_L, Air, "Sensor_L", 0, 0, 0);
-    physiSensor_L = new G4PVPlacement(NULL, G4ThreeVector(0., -24.5 * mm, 0.),
-            logicSensor_L, "Sensor_L", logicWorld, false, 0);
+//    solidSensor_L = new G4Box("sensor_l", 2 * mm, 2 * mm, 2 * mm);
+//    logicSensor_L =
+//            new G4LogicalVolume(solidSensor_L, Air, "Sensor_L", 0, 0, 0);
+//    physiSensor_L = new G4PVPlacement(NULL, G4ThreeVector(0., -24.5 * mm, 0.),
+//            logicSensor_L, "Sensor_L", logicWorld, false, 0);
 
     // Definition of "right sensor"
-    solidSensor_R = new G4Box("sensor_r", 2 * mm, 2 * mm, 2 * mm);
-    logicSensor_R =
-            new G4LogicalVolume(solidSensor_R, Air, "Sensor_R", 0, 0, 0);
-    physiSensor_R = new G4PVPlacement(0, G4ThreeVector(0., 24.5 * mm, 0.),
-            logicSensor_L, "Sensor_R", logicWorld, false, 0);
+//    solidSensor_R = new G4Box("sensor_r", 2 * mm, 2 * mm, 2 * mm);
+//    logicSensor_R =
+//            new G4LogicalVolume(solidSensor_R, Air, "Sensor_R", 0, 0, 0);
+//    physiSensor_R = new G4PVPlacement(0, G4ThreeVector(0., 24.5 * mm, 0.),
+//            logicSensor_L, "Sensor_R", logicWorld, false, 0);
 
     SensitiveDetector* sd =
             new SensitiveDetector("SensitiveDetector", runAction);
     G4SDManager* SDman = G4SDManager::GetSDMpointer();
 
-    logicSensor_L->SetSensitiveDetector(sd);
-    logicSensor_R->SetSensitiveDetector(sd);
+//    logicSensor_L->SetSensitiveDetector(sd);
+//    logicSensor_R->SetSensitiveDetector(sd);
+    
+    logicTarget->SetSensitiveDetector(sd);
 
     SDman->AddNewDetector(sd);
 
